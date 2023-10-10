@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 # https://github.com/dennypage/dpinger
-
+LOG_PREFIX=wgpinger.sh
 source /common.sh
 
 # Wireguard

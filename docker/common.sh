@@ -1,7 +1,12 @@
 function _log () {
     local _type=${1:INFO}
     shift
-    echo "$(date '+%Y-%m-%d %H:%M:%S')     ${_type} init.sh: $*"
+
+    local prefix=" "
+    if [ -n "$LOG_PREFIX" ] ; then
+      prefix="[${LOG_PREFIX}] "
+    fi
+    echo "$(date '+%Y-%m-%d %H:%M:%S')     ${_type} ${prefix}$*"
 }
 function _warn() {
     _log "WARN" "$*"

@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 # Functions
-
+LOG_PREFIX=wireguard.sh
 source /common.sh
 
 # Wireguard
@@ -16,9 +16,9 @@ function start_wireguard() {
         WG0_PUBLICKEY=$(cat $WG0_CONFIG | grep PublicKey | sed s/\ //g | cut -d= -f2)
         WG0_GATEWAY=$(cat $WG0_CONFIG | grep CheckGateway | sed s/\ //g | cut -d= -f2)
         _info "Initiating Wireguard Controller"
-        echo "      Endpoint: $WG0_ENDPOINT"
-        echo "    My Address: $WG0_ADDRESS"
-        echo " My Public Key: $WG0_PUBLICKEY"
+        _info "      Endpoint: $WG0_ENDPOINT"
+        _info "    My Address: $WG0_ADDRESS"
+        _info " My Public Key: $WG0_PUBLICKEY"
         wg-quick up wg0
         sleep 2
         wg show
